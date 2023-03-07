@@ -16,6 +16,7 @@
             type="checkbox"
             value="charm"
             id="charm"
+            v-model="checkedBoxes"
           />
           <label for="charm">Shiny charm</label>
           <input
@@ -23,6 +24,7 @@
             type="checkbox"
             value="outbreak"
             id="outbreak"
+            v-model="checkedBoxes"
           />
           <label for="outbreak">Mass outbreak (60 defeated)</label>
           <input
@@ -30,10 +32,10 @@
             type="checkbox"
             value="sandwich"
             id="sandwich"
+            v-model="checkedBoxes"
           />
           <label for="sandwich">Shiny boost sandwich</label>
         </div>
-
         <p class="odds-display">Shiny odds: 1 in {{currentOdds}} Pokémon</p>
         <button @click="calcAverageTries" class="run-button">Go!</button>
         <div v-show="resultIsVisible" class="result-info">

@@ -1,6 +1,7 @@
 Vue.createApp({
   data() {
     return {
+      checkedBoxes: [],
       defaultOdds: 4096,
       shinyCharm: 1365,
       outbreak: 1365,
@@ -39,36 +40,33 @@ Vue.createApp({
     shinyChance() {
       this.resultIsVisible = false;
 
-      const inputCharm = document.querySelector("#charm");
-      const inputOutbreak = document.querySelector("#outbreak");
-      const inputSandwich = document.querySelector("#sandwich");
-
-      if (
-        inputCharm.checked &&
-        inputOutbreak.checked &&
-        inputSandwich.checked
-      ) {
+      if (this.checkedBoxes.length === 3) {
         this.currentOdds = this.maxOdds;
       } else if (
-        inputCharm.checked &&
-        inputOutbreak.checked &&
-        inputSandwich.checked == false
+        this.checkedBoxes.length === 2 &&
+        !this.checkedBoxes.includes("sandwich")
       ) {
         this.currentOdds = this.charmOutbreak;
       } else if (
-        (inputCharm.checked &&
-          inputOutbreak.checked == false &&
-          inputSandwich.checked) ||
-        (inputCharm.checked == false &&
-          inputOutbreak.checked &&
-          inputSandwich.checked)
+        (this.checkedBoxes.length === 2 &&
+          !this.checkedBoxes.includes("outbreak")) ||
+        (this.checkedBoxes.length === 2 && !this.checkedBoxes.includes("charm"))
       ) {
         this.currentOdds = this.sandwichOutbreak;
-      } else if (inputCharm.checked) {
+      } else if (
+        this.checkedBoxes.length === 1 &&
+        this.checkedBoxes.includes("charm")
+      ) {
         this.currentOdds = this.shinyCharm;
-      } else if (inputOutbreak.checked) {
+      } else if (
+        this.checkedBoxes.length === 1 &&
+        this.checkedBoxes.includes("outbreak")
+      ) {
         this.currentOdds = this.outbreak;
-      } else if (inputSandwich.checked) {
+      } else if (
+        this.checkedBoxes.length === 1 &&
+        this.checkedBoxes.includes("sandwich")
+      ) {
         this.currentOdds = this.sandwich;
       } else {
         this.currentOdds = this.defaultOdds;
@@ -94,8 +92,6 @@ Vue.createApp({
         noShinyEncounter = true;
         simRounds++;
       }
-
-      //console.log("Total tries: ", allTotalTries);
 
       return allTotalTries;
     },
