@@ -1,0 +1,25 @@
+{
+  "name": "shiny-chance-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "serve": "serve ./src",
+    "e2e": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nubiluma/shiny-chance-encounter-sim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nubiluma/shiny-chance-encounter-sim/issues"
+  },
+  "homepage": "https://github.com/Nubiluma/shiny-chance-encounter-sim#readme",
+  "devDependencies": {
+    "cypress": "^12.7.0",
+    "serve": "^14.2.0"
+  }
+}
