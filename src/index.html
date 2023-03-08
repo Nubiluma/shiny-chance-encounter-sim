@@ -17,6 +17,7 @@
             value="charm"
             id="charm"
             v-model="checkedBoxes"
+            data-cy="input-charm"
           />
           <label for="charm">Shiny charm</label>
           <input
@@ -25,6 +26,7 @@
             value="outbreak"
             id="outbreak"
             v-model="checkedBoxes"
+            data-cy="input-outbreak"
           />
           <label for="outbreak">Mass outbreak (60 defeated)</label>
           <input
@@ -33,16 +35,27 @@
             value="sandwich"
             id="sandwich"
             v-model="checkedBoxes"
+            data-cy="input-sandwich"
           />
           <label for="sandwich">Shiny boost sandwich</label>
         </div>
-        <p class="odds-display">Shiny odds: 1 in {{currentOdds}} Pokémon</p>
-        <button @click="calcAverageTries" class="run-button">Go!</button>
+        <p class="odds-display" data-cy="odds-display">
+          Shiny odds: 1 in {{currentOdds}} Pokémon
+        </p>
+        <button
+          @click="calcAverageTries"
+          class="run-button"
+          data-cy="run-button"
+        >
+          Go!
+        </button>
         <div v-show="resultIsVisible" class="result-info">
           <p>
             Average encounters until a shiny appeared (out of 5 iterations):
           </p>
-          <p>{{result}} encounters ({{resultFeedback}})</p>
+          <p class="result-display" data-cy="results">
+            {{result}} encounters ({{resultFeedback}})
+          </p>
         </div>
       </div>
     </main>
